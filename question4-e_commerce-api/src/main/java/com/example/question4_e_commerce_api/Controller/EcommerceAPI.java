@@ -2,6 +2,7 @@ package com.example.question4_e_commerce_api.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
@@ -179,7 +180,7 @@ public class EcommerceAPI {
 
     
     @DeleteMapping("/{id}")
-    public List<Product> deleteProduct(@PathVariable long id){
+    public Map<String, String> deleteProduct(@PathVariable long id){
         Product prod = products.stream().filter(el->el.getId() == id).findFirst().orElseThrow(()->
                         new ResponseStatusException(
                             HttpStatus.NOT_FOUND,
@@ -187,6 +188,9 @@ public class EcommerceAPI {
                         )
                     );
         products.remove(prod);
-        return products;
+        return Map.of(
+            "message", "Product deleted successfully",
+            "Product_Id", String.valueOf(id)
+        );;
     }
 }

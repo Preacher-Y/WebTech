@@ -2,6 +2,7 @@ package com.example.question3_restaurant_api.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
@@ -98,7 +99,7 @@ public class MenuApi {
     }
 
     @DeleteMapping("/{id}")
-    public MenuItem removeItemFromMenu(@PathVariable long id){
+    public Map<String, String> removeItemFromMenu(@PathVariable long id){
         MenuItem item = menuItems.stream().filter(el->el.getId() == id)
                             .findFirst()
                             .orElseThrow(()->
@@ -108,6 +109,9 @@ public class MenuApi {
                                 )
                             );
         menuItems.remove(item);
-        return item;
+        return Map.of(
+            "message", "Item deleted successfully",
+            "Item_Id", String.valueOf(id)
+        );
     }
 }

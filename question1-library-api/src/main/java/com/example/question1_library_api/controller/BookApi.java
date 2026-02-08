@@ -68,7 +68,7 @@ public class BookApi {
     }
 
     @DeleteMapping("/{id}")
-    public Book deleteBookById(@PathVariable long id){
+    public Map<String, String> deleteBookById(@PathVariable long id){
         Book bookToDelete = books.stream()
                     .filter(el->el.getId()==id)
                     .findFirst().orElseThrow(() ->
@@ -78,7 +78,10 @@ public class BookApi {
                         )
                     );
         books.remove(bookToDelete);
-        return bookToDelete;
+        return Map.of(
+            "Message", "Book deleted successfully",
+            "Book_Id", String.valueOf(id)
+        );
     }
     
 }
