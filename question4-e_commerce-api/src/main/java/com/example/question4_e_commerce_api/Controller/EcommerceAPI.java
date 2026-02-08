@@ -191,6 +191,6 @@ public class EcommerceAPI {
         return Map.of(
             "message", "Product deleted successfully",
             "Product_Id", String.valueOf(id)
-        );;
+        );
     }
 }
