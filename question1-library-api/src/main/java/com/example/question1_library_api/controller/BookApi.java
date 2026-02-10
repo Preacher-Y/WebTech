@@ -1,21 +1,23 @@
 package com.example.question1_library_api.controller;
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import com.example.question1_library_api.model.Book;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.example.question1_library_api.model.Book;
 
 
 @RestController()
@@ -27,7 +29,7 @@ public class BookApi {
     public BookApi() {
         books.add(new Book(1323,"Preacher's Doctrine","Preacher Y","PR123",1998));
         books.add(new Book(1431,"Safe Space Project","Coosin D","DA123",2050));
-        books.add(new Book(1142,"Sugar Mommy Daily Life","Karlie A","ALK23",2050));
+        books.add(new Book(1142,"Daily Life as a Sugar Mommy","Karlie A","ALK23",2050));
     }
 
     @GetMapping()
@@ -62,6 +64,7 @@ public class BookApi {
     }
 
     @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
     public Book addNewBook(@RequestBody Book book) {
         books.add(book);
         return book;

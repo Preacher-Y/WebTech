@@ -19,7 +19,7 @@ This is the Model Structure and also the Request Body for POST request :
 }
 ```
 
-## Endpoints for the Restaurant (`/api/menu`)
+## Endpoints for the User Profile (`/api/menu`)
 
 ### 1. **GET  `/`** (Get all users) : 
 

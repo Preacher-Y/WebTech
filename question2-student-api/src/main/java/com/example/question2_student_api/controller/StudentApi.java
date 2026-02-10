@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
 
@@ -51,7 +52,7 @@ public class StudentApi {
     @GetMapping("/major/{major}")
     public List<Student> getStudentsByMajor(@PathVariable String major){
         return students.stream()
-                    .filter(el->el.getMajor().contains(major))
+                    .filter(el->el.getMajor().toLowerCase().contains(major.toLowerCase()))
                     .collect(Collectors.toList());
     }
 
@@ -63,6 +64,7 @@ public class StudentApi {
     }
 
     @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
     public Student registerNewStudent(@RequestBody Student newStudent){
         students.add(newStudent);
         return newStudent;

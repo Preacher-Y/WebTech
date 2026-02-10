@@ -17,7 +17,7 @@ This is the Model Structure and also the Request Body for POST request :
 }
 ```
 
-## Endpoints for the Restaurant (`/api/tasks`)
+## Endpoints for the Task Management (`/api/tasks`)
 
 ### 1. **GET  `/`** (Get all Tasks) : 
 

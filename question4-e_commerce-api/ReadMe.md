@@ -18,7 +18,7 @@ This is the Model Structure and also the Request Body for POST request :
 }
 ```
 
-## Endpoints for the Restaurant (`/api/products`)
+## Endpoints for the E-Commerce (`/api/products`)
 
 ### 1. **GET  `/?page={page}&limit={limit}`** (Get all products) : 
 
